@@ -1,11 +1,11 @@
 package com.remsfgosim.rest.Controller;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.remsfgosim.rest.Models.CraftEssences;
 import com.remsfgosim.rest.Models.Servants;
 import com.remsfgosim.rest.Repo.CraftEssencesRepo;
 import com.remsfgosim.rest.Repo.ServantRepo;
+import java.util.List;
 
 @RestController
 public class ApiControllers {
@@ -16,29 +16,19 @@ public class ApiControllers {
 
     @GetMapping(value = "/")
     public String getPage(){
-        return "Welcome";
+        return "FgoServantCEapi";
     }
     
+    //SERVANT DATA
     @GetMapping(value = "/servants")
     public List<Servants> getServants() {
         return servantRepo.findAll();
-    }
-
-    @GetMapping(value = "/ces")
-    public List<CraftEssences> getCraftEssences() {
-        return craftEssencesRepo.findAll();
     }
 
     @PostMapping(value = "/saveServants")
     public String saveServants(@RequestBody Servants servant){
         servantRepo.save(servant);
         return "Added " + servant.getName();
-    }
-
-    @PostMapping(value = "/saveCes")
-    public String saveServants(@RequestBody CraftEssences craftEssences){
-        craftEssencesRepo.save(craftEssences);
-        return "Added " + craftEssences.getName();
     }
 
     @PutMapping(value = "/updateServant/{id}")
@@ -88,5 +78,16 @@ public class ApiControllers {
         return list;
     }
 
+    //CE DATA
+    @GetMapping(value = "/ces")
+    public List<CraftEssences> getCraftEssences() {
+        return craftEssencesRepo.findAll();
+    }
+
+    @PostMapping(value = "/saveCes")
+    public String saveServants(@RequestBody CraftEssences craftEssences){
+        craftEssencesRepo.save(craftEssences);
+        return "Added " + craftEssences.getName();
+    }
 
 }

@@ -11,16 +11,16 @@ public class Servants {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;        //Servant id
+    private long id;        //Servant ingame id
 
     @Column
     private String name;    //Servent Name
     
     @Column
-    private int rarity;     //4 or 5 stars
+    private int rarity;     //Stars
     
     @Column
-    private String type;    //Limited, story, unsummonable
+    private String type;    //Limited, Story, Unsummonable, FP
 
     @Column
     private String imgLink;

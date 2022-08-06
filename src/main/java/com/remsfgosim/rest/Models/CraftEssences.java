@@ -10,20 +10,19 @@ import javax.persistence.Id;
 public class CraftEssences {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;            //CE id
+    private long id;            //CE ingame id
 
     @Column
     private String name;        //CE name
     
     @Column
-    private int rarity;         //4 or 5 stars
+    private int rarity;         //Stars
     
     @Column
     private String type;        //Limited, story, unsummonable,
 
     @Column
     private String imgLink;
-
 
     public long getId(){
         return id;
