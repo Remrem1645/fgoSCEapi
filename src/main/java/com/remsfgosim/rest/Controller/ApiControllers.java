@@ -39,14 +39,14 @@ public class ApiControllers {
         updatedServants.setType(servant.getType());
         updatedServants.setImgLink(servant.getImgLink());
         servantRepo.save(updatedServants);
-        return "Updated ID: " + id;
+        return "Updated Servant ID: " + id;
     }
 
     @DeleteMapping(value = "/removeServant/{id}")
     public String removeServant(@PathVariable long id){
         Servants removeServant = servantRepo.findById(id).get();
         servantRepo.delete(removeServant);
-        return "Removed ID:" + id;
+        return "Removed Servant ID: " + id;
     }
 
     @RequestMapping(value="/servants/id/{id}", method = RequestMethod.GET)
@@ -65,14 +65,14 @@ public class ApiControllers {
 
     @RequestMapping(value="/servants/type/{type}", method = RequestMethod.GET)
     public @ResponseBody
-    List<Servants> getServantsByRarity(@PathVariable("type") String type) {   
+    List<Servants> getServantsByType(@PathVariable("type") String type) {   
         List<Servants> list = servantRepo.findByType(type);              
         return list;
     }
 
     @RequestMapping(value = "/servants/rarity/{rarity}/type/{type}", method = RequestMethod.GET)
     public @ResponseBody
-    List<Servants> getServantsByRarityAndRarity(@PathVariable("rarity") int rarity, @PathVariable("type") String type){
+    List<Servants> getServantsByRarityAndType(@PathVariable("rarity") int rarity, @PathVariable("type") String type){
         List<Servants> list = servantRepo.findByRarity(rarity);
         list = servantRepo.findByType(type);
         return list;
@@ -84,10 +84,56 @@ public class ApiControllers {
         return craftEssencesRepo.findAll();
     }
 
-    @PostMapping(value = "/saveCes")
-    public String saveServants(@RequestBody CraftEssences craftEssences){
+    @PostMapping(value = "/saveCe")
+    public String saveCraftEssence(@RequestBody CraftEssences craftEssences){
         craftEssencesRepo.save(craftEssences);
         return "Added " + craftEssences.getName();
     }
 
+    @PutMapping(value = "/updateCes/{id}")
+    public String updateCe(@PathVariable long id, @RequestBody CraftEssences craftEssences){
+        CraftEssences updatedCe = craftEssencesRepo.findById(id).get();
+        updatedCe.setName(craftEssences.getName());
+        updatedCe.setRarity(craftEssences.getRarity());
+        updatedCe.setType(craftEssences.getType());
+        updatedCe.setImgLink(craftEssences.getImgLink());
+        craftEssencesRepo.save(updatedCe);
+        return "Updated CE ID: " + id;
+    }
+
+    @DeleteMapping(value = "/removeCe/{id}")
+    public String removeCe(@PathVariable long id){
+        CraftEssences removeCe = craftEssencesRepo.findById(id).get();
+        craftEssencesRepo.delete(removeCe);
+        return "Removed CE ID: " + id;
+    }
+
+    @RequestMapping(value="/ces/id/{id}", method = RequestMethod.GET)
+    public @ResponseBody
+    CraftEssences getCeById(@PathVariable("id") long itemid) {   
+        CraftEssences i = craftEssencesRepo.findById(itemid).get();              
+        return i;
+    }
+
+    @RequestMapping(value="/ces/rarity/{rarity}", method = RequestMethod.GET)
+    public @ResponseBody
+    List<CraftEssences> getCesByRarity(@PathVariable("rarity") int rarity) {   
+        List<CraftEssences> list = craftEssencesRepo.findByRarity(rarity);              
+        return list;
+    }
+
+    @RequestMapping(value="/ces/type/{type}", method = RequestMethod.GET)
+    public @ResponseBody
+    List<CraftEssences> getCesByType(@PathVariable("type") String type) {   
+        List<CraftEssences> list = craftEssencesRepo.findByType(type);              
+        return list;
+    }
+
+    @RequestMapping(value = "/ces/rarity/{rarity}/type/{type}", method = RequestMethod.GET)
+    public @ResponseBody
+    List<CraftEssences> getCesByRarityAndType(@PathVariable("rarity") int rarity, @PathVariable("type") String type){
+        List<CraftEssences> list = craftEssencesRepo.findByRarity(rarity);
+        list = craftEssencesRepo.findByType(type);
+        return list;
+    }
 }
