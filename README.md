@@ -20,7 +20,7 @@
     <h1 align = "center"><b>Project 0 (CS2400)</b></h1>
     <p> David Yan </p>
     <p><a href="https://github.com/Remrem1645/fgoSCEapi">GitHub Repo</a></p>
-    <p><a href="">Video</a></p>
+    <p><a href="https://www.youtube.com/watch?v=SJTIDkQXIcA">Video</a></p>
     <p><a href="https://obsproject.com/">Open Broadcaster Software</a></p>
 </div>
 
