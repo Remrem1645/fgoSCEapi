@@ -1,10 +1,8 @@
 package com.remsfgosim.rest.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import com.remsfgosim.rest.Models.CraftEssences;
-import com.remsfgosim.rest.Models.Servants;
-import com.remsfgosim.rest.Repo.CraftEssencesRepo;
-import com.remsfgosim.rest.Repo.ServantRepo;
+import com.remsfgosim.rest.Models.*;
+import com.remsfgosim.rest.Repo.*;
 import java.util.List;
 
 @RestController
